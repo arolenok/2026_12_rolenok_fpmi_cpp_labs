@@ -4,7 +4,7 @@
 int main() {
     int n, c, squares_sum;
     bool flag = false;
-    std:: cout << "enter an integer: ";
+    std:: cout << "enter a positive integer: ";
     if (std::cin >> n and n > 0) {
         std::cout << "pythagorean triples for n = " << n << ":" << std::endl;
         for (int a = 1; a<= n; a++) {
