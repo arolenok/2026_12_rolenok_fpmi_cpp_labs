@@ -1,29 +1,27 @@
+#include <cstdlib>
 #include <iostream>
 
 void TryRead(int& number) {
     if (!(std::cin >> number)) {
         std::cout << "Fail on reading the number." << std::endl;
-        std::exit(0);
+        std::exit(1);
     }
 }
 
-bool IsNotNegative(int number) { 
-    return abs(number) == number;
+bool IsPositive(int number) {
+    return number > 0;
 }
 
 int main() {
     int number;
-    
+
     std::cout << "Enter the number: ";
     TryRead(number);
-    
-    bool std_non_negative_check = (number >= 0);
-    
-    if (IsNotNegative(number) == std_non_negative_check) {
-        std::cout << "Try again...." << std::endl;
+
+    if (IsPositive(number)) {
+        std::cout << "The number is positive." << std::endl;
     } else {
-        std::cout << "You broke my program :(" << std::endl;
-        exit(1);
+        std::cout << "The number is not positive." << std::endl;
     }
 
     return 0;
