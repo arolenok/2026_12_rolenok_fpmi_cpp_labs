@@ -2,15 +2,18 @@
 #include <cmath>
 
 int main() {
-    int n, c, squares_sum;
+    long long n;
+    long long squares_sum, c;
     bool flag = false;
     std:: cout << "enter a positive integer: ";
     if (std::cin >> n and n > 0) {
         std::cout << "pythagorean triples for n = " << n << ":" << std::endl;
-        for (int a = 1; a<= n; a++) {
-            for (int b = a; b <= n; b++) {
+        for (long long a = 1; a <= n; a++) {
+            if (a * a + a * a > n * n) break;
+            for (long long b = a; b <= n; b++) {
                 squares_sum = a * a + b * b;
-                c = std::sqrt(squares_sum);
+                if (squares_sum > n * n) break;
+                c = (long long)std::sqrt((double) squares_sum);
                 if (c <= n and c * c == squares_sum) {
                     std::cout << "a = " << a << ", " << "b = " << b << ", " << "c = " << c << std::endl;
                     flag = true;
