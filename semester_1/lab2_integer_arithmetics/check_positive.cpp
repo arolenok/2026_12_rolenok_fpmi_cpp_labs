@@ -14,7 +14,7 @@ bool IsNotNegative(int number) {
 int main() {
     int number;
 
-    std::cout << "Enter the number: ";
+    std::cout << "Enter the number: "; // -2147483648
     TryRead(number);
 
     bool std_non_negative_check = (number >= 0);
