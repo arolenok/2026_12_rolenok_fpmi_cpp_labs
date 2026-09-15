@@ -1,15 +1,14 @@
-#include <cstdlib>
 #include <iostream>
 
 void TryRead(int& number) {
     if (!(std::cin >> number)) {
         std::cout << "Fail on reading the number." << std::endl;
-        std::exit(1);
+        std::exit(0);
     }
 }
 
-bool IsPositive(int number) {
-    return number > 0;
+bool IsNotNegative(int number) {
+    return abs(number) == number;
 }
 
 int main() {
@@ -18,10 +17,13 @@ int main() {
     std::cout << "Enter the number: ";
     TryRead(number);
 
-    if (IsPositive(number)) {
-        std::cout << "The number is positive." << std::endl;
+    bool std_non_negative_check = (number >= 0);
+
+    if (IsNotNegative(number) == std_non_negative_check) {
+        std::cout << "Try again...." << std::endl;
     } else {
-        std::cout << "The number is not positive." << std::endl;
+        std::cout << "You broke my program :(" << std::endl;
+        exit(1);
     }
 
     return 0;
