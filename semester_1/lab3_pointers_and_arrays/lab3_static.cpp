@@ -120,31 +120,26 @@ void printArray(double* arr, int size) {
 }
 
 void transformArray(double* arr, int size) {
-    double result[MAX_LENGTH];
-    bool used[MAX_LENGTH] = {false};
-
-    int pos = 0;
+    int count = 0;
     for (int i = 0; i < size; i++) {
         if (isSuitable(arr[i])) {
-            result[pos] = arr[i];
-            used[pos] = true;
-            pos += 2;
+            double tmp = arr[i];
+            for (int j = i; j > count; j--) {
+                arr[j] = arr[j - 1];
+            }
+            arr[count] = tmp;
+            count++;
         }
     }
-
-    int freeIdx = 0;
-    for (int i = 0; i < size; i++) {
-        if (!isSuitable(arr[i])) {
-            while (used[freeIdx]) freeIdx++;
-            result[freeIdx] = arr[i];
-            used[freeIdx] = true;
+    for (int k = count - 1; k >= 1; k--) {
+        double tmp = arr[k];
+        for (int j = k; j < 2 * k; j++) {
+            arr[j] = arr[j + 1];
         }
-    }
-
-    for (int i = 0; i < size; i++) {
-        arr[i] = result[i];
+        arr[2 * k] = tmp;
     }
 }
+
 
 int countSuitable(double* arr, int size) {
     int count = 0;

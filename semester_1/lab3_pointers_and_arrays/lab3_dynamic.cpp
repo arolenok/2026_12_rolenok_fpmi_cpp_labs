@@ -117,22 +117,15 @@ void printArray(int* arr, int size) {
 }
 
 void transformArray(int* arr, int size) {
-    int* result = new int[size];
-
-    int pos = 0;
-
+    int count = 0;
     for (int i = 0; i < size; i++) {
         if (isNegative(arr[i])) {
-            result[pos++] = arr[i];
+            int tmp = arr[i];
+            for (int j = i; j > count; j--) {
+                arr[j] = arr[j - 1];
+            }
+            arr[count] = tmp;
+            count++;
         }
     }
-    for (int i = 0; i < size; i++) {
-        if (!isNegative(arr[i])) {
-            result[pos++] = arr[i];
-        }
-    }
-    for (int i = 0; i < size; i++) {
-        arr[i] = result[i];
-    }
-    delete[] result;
 }
