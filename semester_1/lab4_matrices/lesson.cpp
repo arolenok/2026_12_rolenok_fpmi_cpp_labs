@@ -1,9 +1,9 @@
 #include <iostream>
 
 void multiplyMatrix(int** matrix1, int** matrix2, int**& resultMatrix, const int m, const int n, const int p);
-void inputMatrix(int**& matrix, const int m, const int n);
-void destroyMatrix(int** matrix, const int m);
-void printMatrix(int** matrix, const int m, const int n);
+void inputMatrix(int**& matrix, const int rows, const int columns);
+void destroyMatrix(int** matrix, const int rows);
+void printMatrix(int** matrix, const int rows, const int columns);
 
 int main() {
     int m, n, p;
@@ -57,15 +57,15 @@ void multiplyMatrix(int** matrix1, int** matrix2, int**& matrix, const int m, co
     }
 }
 
-void inputMatrix(int**& matrix, const int m, const int n) {
+void inputMatrix(int**& matrix, const int rows, const int columns) {
     std::cout << "INPUT MATRIX" << std::endl;
-    matrix = new int*[m];
-    for (int i = 0; i < m; ++i) {
-        matrix[i] = new int[n];
+    matrix = new int*[rows];
+    for (int i = 0; i < rows; ++i) {
+        matrix[i] = new int[columns];
     }
-    for (int i = 0; i < m; ++i) {
+    for (int i = 0; i < rows; ++i) {
         std::cout << "row number " << i + 1 << std::endl;
-        for (int j = 0; j < n; ++j) {
+        for (int j = 0; j < columns; ++j) {
             std::cout << "element " << j + 1 << " : ";
             std::cin >> matrix[i][j];
         }
@@ -73,16 +73,16 @@ void inputMatrix(int**& matrix, const int m, const int n) {
     }
 }
 
-void destroyMatrix(int** matrix, const int m) {
-    for (int i = 0; i < m; ++i) {
+void destroyMatrix(int** matrix, const int rows) {
+    for (int i = 0; i < rows; ++i) {
         delete[] matrix[i];
     }
     delete[] matrix;
 }
 
-void printMatrix(int** matrix, const int m, const int n) {
-    for (int i = 0; i < m; ++i) {
-        for (int j = 0; j < n; ++j) {
+void printMatrix(int** matrix, const int rows, const int columns) {
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < columns; ++j) {
             std::cout << matrix[i][j] << " ";
         }
         std::cout << std::endl;
