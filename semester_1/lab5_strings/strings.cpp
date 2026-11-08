@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-
+//var7
 int main() {
     std::string str, result = "";
     int counter = 0;

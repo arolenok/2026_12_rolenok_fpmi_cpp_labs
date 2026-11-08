@@ -2,7 +2,7 @@
 #include <random>
 #include <utility>
 #include <cstdlib>
-
+//var7
 void solveMatrix(int** source, int** matrix, const int rows, const int columns);
 void inputMatrix(int**& matrix, const int rows, const int columns);
 void destroyMatrix(int** matrix, const int rows);
@@ -151,7 +151,7 @@ void inputCheck(auto &neededInput, int** matrix, const int rows) {
 void createMatrix(int**& matrix, const int rows, const int columns) {
     matrix = new int*[rows];
     for (int i = 0; i < rows; ++i) {
-        matrix[i] = new int[columns];
+        matrix[i] = new int[columns]{};
     }
     for (int row = 0; row < rows; ++row) {
         for (int col = 0; col < columns; ++col) {

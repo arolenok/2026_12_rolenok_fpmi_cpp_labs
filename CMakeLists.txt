@@ -1,13 +1,19 @@
-cmake_minimum_required(VERSION 3.28)
-project(fpml_gcd_lab)
+cmake_minimum_required(VERSION 3.20)
+project(fpmi_gcd_lab)
 
-set(CMAKE_CXX_STANDARD 26)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_executable(lab2_gcd semester_1/lab2_integer_arithmetics/gcd.cpp)
+file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS ${CMAKE_SOURCE_DIR}/*.cpp)
+list(FILTER SOURCES EXCLUDE REGEX "/(cmake-build[^/]*|build|\\.git|\\.idea)/")
 
-add_executable(lab3_static semester_1/lab3_pointers_and_arrays/lab3_static.cpp)
+foreach(src ${SOURCES})
+    file(RELATIVE_PATH rel ${CMAKE_SOURCE_DIR} ${src})
+    string(REGEX REPLACE "\\.cpp$" "" name ${rel})
+    string(REPLACE "/" "_" name ${name})
+    add_executable(${name} ${src})
 
-add_executable(lab3_dynamic semester_1/lab3_pointers_and_arrays/lab3_dynamic.cpp)
-
-add_executable(lab4_matrices semester_1/lab4_matrices/lab4.cpp)
+    get_filename_component(dir ${src} DIRECTORY)
+    set_target_properties(${name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${dir})
+endforeach()
