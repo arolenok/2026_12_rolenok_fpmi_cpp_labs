@@ -81,6 +81,5 @@ static void compress(const std::string& str, std::string& result) {
 
 static void writeLog(std::ofstream& olog, const std::string& message) {
     std::time_t t = std::time(nullptr);
-    olog << std::put_time(std::localtime(&t), "%d.%m.%Y %H:%M:%S")
-        << " | " << message << std::endl;
+    olog << std::put_time(std::localtime(&t), "%d.%m.%Y %H:%M:%S") << " | " << message << std::endl;
 }
