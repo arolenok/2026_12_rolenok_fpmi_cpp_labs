@@ -38,7 +38,7 @@ int main() {
         olog.close();
         return 2;
     }
-    writeLog(olog, std::format("created \"{}\"", output));
+    writeLog(olog, std::format("opened \"{}\"", output));
 
     writeLog(olog, std::format("reading lines from \"{}\"", input));
     while (std::getline(in, str)) {
