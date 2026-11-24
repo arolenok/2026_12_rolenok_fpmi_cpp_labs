@@ -5,7 +5,7 @@ Complex::Complex() {
     im_ = 0.0;
 }
 
-Complex::Complex(double re, double im) {
+Complex::Complex(const double re, const double im) {
     re_ = re;
     im_ = im;
 }
@@ -91,14 +91,14 @@ Complex& Complex::operator-=(const Complex &other) {
 }
 
 Complex& Complex::operator*=(const Complex &other) {
-    Complex result = *this * other;
+    const Complex result = *this * other;
     im_ = result.im_;
     re_ = result.re_;
     return *this;
 }
 
 Complex& Complex::operator/=(const Complex &other) {
-    Complex result = *this / other;
+    const Complex result = *this / other;
     im_ = result.im_;
     re_ = result.re_;
     return *this;
